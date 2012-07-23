@@ -8,17 +8,14 @@
  * @package   Zend_Math
  */
 
-namespace Zend\Math\Exception;
+namespace Zend\Math\BigInteger\Exception;
 
 /**
- * Invalid argument exception
+ * Division by zero exception
  *
  * @category   Zend
  * @package    Zend_Math
- * @subpackage Exception
+ * @subpackage BigInteger
  */
-class InvalidArgumentException
-    extends \InvalidArgumentException
-    implements ExceptionInterface
-{
-}
+class DivisionByZeroException extends RuntimeException implements ExceptionInterface
+{}
