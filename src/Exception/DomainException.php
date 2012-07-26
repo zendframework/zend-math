@@ -8,16 +8,14 @@
  * @package   Zend_Math
  */
 
-namespace Zend\Math\BigInteger\Exception;
-
-use Zend\Math\Exception;
+namespace Zend\Math\Exception;
 
 /**
  * Invalid argument exception
  *
  * @category   Zend
  * @package    Zend_Math
- * @subpackage BigInteger
+ * @subpackage Exception
  */
-class InvalidArgumentException extends Exception\InvalidArgumentException implements ExceptionInterface
+class DomainException extends \DomainException implements ExceptionInterface
 {}
