@@ -13,8 +13,7 @@
         }
     },
     "require": {
-        "php": ">=5.3.3",
-        "zendframework/zend-servicemanager": "self.version"
+        "php": ">=5.3.3"
     },
     "suggest": {
         "ext-bcmath": "If using the bcmath functionality",
