@@ -34,14 +34,12 @@ abstract class Rand
      */
     public static function getBytes($length, $strong = false)
     {
-        $length = (int) $length;
-
         if ($length <= 0) {
             return false;
         }
         $bytes = '';
         if (function_exists('openssl_random_pseudo_bytes')
-            && ((PHP_VERSION_ID >= 50304)
+            && (version_compare(PHP_VERSION, '5.3.4') >= 0
             || strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN')
         ) {
             $bytes = openssl_random_pseudo_bytes($length, $usable);
@@ -50,7 +48,7 @@ abstract class Rand
             }
         }
         if (function_exists('mcrypt_create_iv')
-            && ((PHP_VERSION_ID >= 50307)
+            && (version_compare(PHP_VERSION, '5.3.7') >= 0
             || strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN')
         ) {
             $bytes = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
@@ -132,21 +130,13 @@ abstract class Rand
                 'The supplied range is too great to generate'
             );
         }
-
-        // calculate number of bits required to store range on this machine
-        $r = $range;
-        $bits = 0;
-        while ($r >>= 1) {
-            $bits++;
-        }
-
-        $bits   = (int) max($bits, 1);
-        $bytes  = (int) max(ceil($bits / 8), 1);
-        $filter = (int) ((1 << $bits) - 1);
-
+        $log    = log($range, 2);
+        $bytes  = (int) ($log / 8) + 1;
+        $bits   = (int) $log + 1;
+        $filter = (int) (1 << $bits) - 1;
         do {
-            $rnd  = hexdec(bin2hex(static::getBytes($bytes, $strong)));
-            $rnd &= $filter;
+            $rnd = hexdec(bin2hex(self::getBytes($bytes, $strong)));
+            $rnd = $rnd & $filter;
         } while ($rnd > $range);
 
         return ($min + $rnd);
