@@ -136,9 +136,8 @@ abstract class Rand
         // calculate number of bits required to store range on this machine
         $r = $range;
         $bits = 0;
-        while ($r) {
+        while ($r >>= 1) {
             $bits++;
-            $r >>= 1;
         }
 
         $bits   = (int) max($bits, 1);
