@@ -3,7 +3,7 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -16,6 +16,7 @@ use RandomLib;
  */
 abstract class Rand
 {
+
     /**
      * Alternative random byte generator using RandomLib
      *
@@ -33,19 +34,23 @@ abstract class Rand
      */
     public static function getBytes($length, $strong = false)
     {
-        $length = (int) $length;
-
         if ($length <= 0) {
             return false;
         }
-
-        if (function_exists('openssl_random_pseudo_bytes')) {
+        $bytes = '';
+        if (function_exists('openssl_random_pseudo_bytes')
+            && (version_compare(PHP_VERSION, '5.3.4') >= 0
+            || strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN')
+        ) {
             $bytes = openssl_random_pseudo_bytes($length, $usable);
             if (true === $usable) {
                 return $bytes;
             }
         }
-        if (function_exists('mcrypt_create_iv')) {
+        if (function_exists('mcrypt_create_iv')
+            && (version_compare(PHP_VERSION, '5.3.7') >= 0
+            || strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN')
+        ) {
             $bytes = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
             if ($bytes !== false && strlen($bytes) === $length) {
                 return $bytes;
@@ -70,7 +75,7 @@ abstract class Rand
      */
     public static function getAlternativeGenerator()
     {
-        if (null !== static::$generator) {
+        if (!is_null(static::$generator)) {
             return static::$generator;
         }
         if (!class_exists('RandomLib\\Factory')) {
@@ -129,9 +134,8 @@ abstract class Rand
         // calculate number of bits required to store range on this machine
         $r = $range;
         $bits = 0;
-        while ($r) {
+        while ($r >>= 1) {
             $bits++;
-            $r >>= 1;
         }
 
         $bits   = (int) max($bits, 1);
