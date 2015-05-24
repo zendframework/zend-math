@@ -36,7 +36,9 @@
     },
     "require-dev": {
         "fabpot/php-cs-fixer": "1.7.*",
+        "ircmaxell/random-lib": "~1.1",
         "satooshi/php-coveralls": "dev-master",
-        "phpunit/PHPUnit": "~4.0"
+        "phpunit/PHPUnit": "~4.0",
+        "zendframework/zend-servicemanager": "~2.4"
     }
 }
