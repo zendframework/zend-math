@@ -1,5 +1,8 @@
 # zend-math
 
+[![Build Status](https://secure.travis-ci.org/zendframework/zend-math.svg?branch=master)](https://secure.travis-ci.org/zendframework/zend-math)
+[![Coverage Status](https://coveralls.io/repos/zendframework/zend-math/badge.svg?branch=master)](https://coveralls.io/r/zendframework/zend-math)
+
 `Zend\Math` provides general mathematical functions. So far the supported
 functionalities are:
 
