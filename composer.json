@@ -25,8 +25,8 @@
     "prefer-stable": true,
     "extra": {
         "branch-alias": {
-            "dev-master": "2.4-dev",
-            "dev-develop": "2.5-dev"
+            "dev-master": "2.5-dev",
+            "dev-develop": "2.6-dev"
         }
     },
     "autoload-dev": {
@@ -38,6 +38,6 @@
         "fabpot/php-cs-fixer": "1.7.*",
         "ircmaxell/random-lib": "~1.1",
         "phpunit/PHPUnit": "~4.0",
-        "zendframework/zend-servicemanager": "~2.4"
+        "zendframework/zend-servicemanager": "~2.5.0"
     }
 }
