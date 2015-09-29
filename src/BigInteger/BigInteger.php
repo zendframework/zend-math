@@ -9,6 +9,8 @@
 
 namespace Zend\Math\BigInteger;
 
+use Zend\ServiceManager\ServiceManager;
+
 abstract class BigInteger
 {
     /**
@@ -60,7 +62,7 @@ abstract class BigInteger
     public static function getAdapterPluginManager()
     {
         if (static::$adapters === null) {
-            static::$adapters = new AdapterPluginManager();
+            static::$adapters = new AdapterPluginManager(new ServiceManager());
         }
         return static::$adapters;
     }
