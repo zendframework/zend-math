@@ -10,6 +10,7 @@
 namespace Zend\Math\BigInteger;
 
 use Zend\ServiceManager\AbstractPluginManager;
+use Zend\ServiceManager\Factory\InvokableFactory;
 
 /**
  * Plugin manager implementation for BigInteger adapters.
@@ -20,14 +21,16 @@ use Zend\ServiceManager\AbstractPluginManager;
  */
 class AdapterPluginManager extends AbstractPluginManager
 {
-    /**
-     * Default set of adapters
-     *
-     * @var array
-     */
-    protected $invokableClasses = [
-        'bcmath' => 'Zend\Math\BigInteger\Adapter\Bcmath',
-        'gmp'    => 'Zend\Math\BigInteger\Adapter\Gmp',
+    protected $aliases = [
+        'bcmath' => Adapter\Bcmath::class,
+        'Bcmath' => Adapter\Bcmath::class,
+        'gmp'    => Adapter\Gmp::class,
+        'Gmp'    => Adapter\Gmp::class
+    ];
+
+    protected $factories = [
+        Adapter\Bcmath::class => InvokableFactory::class,
+        Adapter\Gmp::class    => InvokableFactory::class
     ];
 
     /**
