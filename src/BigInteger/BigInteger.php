@@ -29,17 +29,19 @@ abstract class BigInteger
         if (null === $adapterName) {
             return static::getAvailableAdapter();
         }
-        $adapterName = sprintf("Zend\Math\BigInteger\Adapter\%s", ucfirst($adapterName));
-        if (!class_exists($adapterName) || !is_subclass_of($adapterName, Adapter\AdapterInterface::class)) {
-            throw new Exception\InvalidArgumentException(
-                sprintf(
-                    "The adapter %s does not exist or it does not implement %s",
-                    $adapterName,
-                    Adapter\AdapterInterface::class
-                )
-            );
+
+        $adapterName = sprintf('%s\\Adapter\\%s', __NAMESPACE__, ucfirst($adapterName));
+        if (! class_exists($adapterName)
+            || ! is_subclass_of($adapterName, Adapter\AdapterInterface::class)
+        ) {
+            throw new Exception\InvalidArgumentException(sprintf(
+                'The adapter %s either does not exist or does not implement %s',
+                $adapterName,
+                Adapter\AdapterInterface::class
+            ));
         }
-        return new $adapterName;
+
+        return new $adapterName();
     }
 
     /**
@@ -74,13 +76,14 @@ abstract class BigInteger
     public static function getAvailableAdapter()
     {
         if (extension_loaded('gmp')) {
-            $adapterName = 'Gmp';
-        } elseif (extension_loaded('bcmath')) {
-            $adapterName = 'Bcmath';
-        } else {
-            throw new Exception\RuntimeException('Big integer math support is not detected');
+            return static::factory('Gmp');
         }
-        return static::factory($adapterName);
+        
+        if (extension_loaded('bcmath')) {
+            return static::factory('Bcmath');
+        }
+
+        throw new Exception\RuntimeException('Big integer math support is not detected');
     }
 
     /**
