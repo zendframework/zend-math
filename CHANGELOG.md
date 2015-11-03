@@ -14,11 +14,13 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- Nothing.
+- [#5](https://github.com/zendframework/zend-math/pull/5) removes
+  `Zend\Math\BigInteger\AdapterPluginManager`, and thus the zend-servicemanager
+  dependency. Essentially, no other possible plugins are likely to ever be
+  needed outside of those shipped with the component, so using a plugin manager
+  was overkill. The functionality for loading the two shipped adapters has been
+  moved into the internals of `Zend\Math\BigInteger\BigInteger`.
 
 ### Fixed
 
-- [#4](https://github.com/zendframework/zend-math/pull/4) updates the codebase
-  to work with the upcoming zend-servicemanager v3 release. This change is
-  transparent to the end user, as it mostly affects only how the plugin managers
-  re implemented, while leaving the functionality the same.
+- Nothing.
