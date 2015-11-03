@@ -44,9 +44,9 @@ class BigIntegerTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Zend\Math\BigInteger\Adapter\AdapterInterface', BigInt::factory());
     }
 
-    public function testFactoryUnknownAdapterRaisesServiceManagerException()
+    public function testFactoryUnknownAdapterRaisesException()
     {
-        $this->setExpectedException('Zend\ServiceManager\Exception\ExceptionInterface');
+        $this->setExpectedException('Zend\Math\Exception\ExceptionInterface');
         BigInt::factory('unknown');
     }
 }

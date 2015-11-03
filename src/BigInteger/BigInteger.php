@@ -9,17 +9,8 @@
 
 namespace Zend\Math\BigInteger;
 
-use Zend\ServiceManager\ServiceManager;
-
 abstract class BigInteger
 {
-    /**
-     * Plugin manager for loading adapters
-     *
-     * @var null|AdapterPluginManager
-     */
-    protected static $adapters = null;
-
     /**
      * The default adapter.
      *
@@ -30,41 +21,25 @@ abstract class BigInteger
     /**
      * Create a BigInteger adapter instance
      *
-     * @param  string|Adapter\AdapterInterface|null $adapterName
+     * @param  string|null $adapterName
      * @return Adapter\AdapterInterface
      */
     public static function factory($adapterName = null)
     {
         if (null === $adapterName) {
             return static::getAvailableAdapter();
-        } elseif ($adapterName instanceof Adapter\AdapterInterface) {
-            return $adapterName;
         }
-
-        return static::getAdapterPluginManager()->get($adapterName);
-    }
-
-    /**
-     * Set adapter plugin manager
-     *
-     * @param AdapterPluginManager $adapters
-     */
-    public static function setAdapterPluginManager(AdapterPluginManager $adapters)
-    {
-        static::$adapters = $adapters;
-    }
-
-    /**
-     * Get the adapter plugin manager
-     *
-     * @return AdapterPluginManager
-     */
-    public static function getAdapterPluginManager()
-    {
-        if (static::$adapters === null) {
-            static::$adapters = new AdapterPluginManager(new ServiceManager);
+        $adapterName = sprintf("Zend\Math\BigInteger\Adapter\%s", ucfirst($adapterName));
+        if (!class_exists($adapterName) || !is_subclass_of($adapterName, Adapter\AdapterInterface::class)) {
+            throw new Exception\InvalidArgumentException(
+                sprintf(
+                    "The adapter %s does not exist or it does not implement %s",
+                    $adapterName,
+                    Adapter\AdapterInterface::class
+                )
+            );
         }
-        return static::$adapters;
+        return new $adapterName;
     }
 
     /**
