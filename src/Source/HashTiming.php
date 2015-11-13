@@ -82,7 +82,7 @@ class HashTiming implements RandomLib\Source
             $total -= $bytes;
             for ($i=1; $i < 3; $i++) {
                 $t1   = microtime(true);
-                $seed = mt_rand();
+                $seed = uniqid(mt_rand() . lcg_value() . rand() . getmypid(), true);
                 for ($j=1; $j < 50; $j++) {
                     $seed = sha1($seed);
                 }
@@ -97,7 +97,7 @@ class HashTiming implements RandomLib\Source
             $iter = $bytes * (int) (ceil(8 / $bits_per_round));
             for ($i = 0; $i < $iter; $i ++) {
                 $t1 = microtime();
-                $seed = sha1(mt_rand());
+                $seed = sha1(uniqid(mt_rand() . lcg_value() . rand(), true));
                 for ($j = 0; $j < $rounds; $j++) {
                     $seed = sha1($seed);
                 }
