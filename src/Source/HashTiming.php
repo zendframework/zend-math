@@ -82,9 +82,9 @@ class HashTiming implements RandomLib\Source
             $total -= $bytes;
             for ($i=1; $i < 3; $i++) {
                 $t1   = microtime(true);
-                $seed = $_seed = uniqid(mt_rand() . lcg_value() . rand() . getmypid(), true);
+                $seed = $initialSeed = uniqid(mt_rand() . lcg_value() . rand() . getmypid(), true);
                 for ($j=1; $j < 50; $j++) {
-                    $seed = sha1($_seed . $seed);
+                    $seed = sha1($initialSeed . $i . $seed);
                 }
                 $t2 = microtime(true);
                 $entropy .= $t1 . $t2;
@@ -97,9 +97,9 @@ class HashTiming implements RandomLib\Source
             $iter = $bytes * (int) (ceil(8 / $bits_per_round));
             for ($i = 0; $i < $iter; $i ++) {
                 $t1 = microtime();
-                $seed = $_seed = sha1(uniqid(mt_rand() . lcg_value() . rand(), true));
+                $seed = $initialSeed = sha1(uniqid(mt_rand() . lcg_value() . rand(), true));
                 for ($j = 0; $j < $rounds; $j++) {
-                    $seed = sha1($_seed . $seed);
+                    $seed = sha1($initialSeed . $i . $seed);
                 }
                 $t2 = microtime();
                 $entropy .= $t1 . $t2;
