@@ -87,7 +87,7 @@ class HashTiming implements RandomLib\Source
                     $seed = sha1($initialSeed . $i . $seed);
                 }
                 $t2 = microtime(true);
-                $entropy .= $t1 . $t2;
+                $entropy .= $t1 . $t2 . $seed;
             }
             $div = (int) (($t2 - $t1) * 1000000);
             if ($div <= 0) {
@@ -102,7 +102,7 @@ class HashTiming implements RandomLib\Source
                     $seed = sha1($initialSeed . $i . $seed);
                 }
                 $t2 = microtime();
-                $entropy .= $t1 . $t2;
+                $entropy .= $t1 . $t2 . $seed;
             }
             $result .= sha1($entropy, true);
         }
