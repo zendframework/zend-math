@@ -318,6 +318,9 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
             ['499602d2',    16, 10,  '1234567890'],
             ['kf12oi',      36, 10,  '1234567890'],
             ['1ly7vk',      62, 10,  '1234567890'],
+
+            // big integer 16 base
+            ['33B000A84D59A000', 16, 10, '3724477614687625216'],
         ];
     }
 
