@@ -337,7 +337,6 @@ class Bcmath implements AdapterInterface
                 : $chars[$remainder];
 
             $result = $intermediate . $result;
-
         } while (bccomp($decimal, '0'));
 
         return $sign . $result;
