@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.0.0 - TBD
+## 2.6.0 - 2016-02-02
 
 ### Added
 
@@ -19,24 +19,6 @@ All notable changes to this project will be documented in this file, in reverse 
   dependency. Essentially, no other possible plugins are likely to ever be
   needed outside of those shipped with the component, so using a plugin manager
   was overkill. The functionality for loading the two shipped adapters has been
-
-### Fixed
-
-- Nothing.
-
-## 2.5.3 - TBD
-
-### Added
-
-- Nothing.
-
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- Nothing.
 
 ### Fixed
 
