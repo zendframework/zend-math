@@ -15,8 +15,8 @@ general purpose usage and for cryptographic scopes. To generate good random numb
 uses different approaches. If PHP 7 is running we used the cryptographically secure pseudo-random
 functions [random_bytes](http://php.net/manual/en/function.random-bytes.php) and
 [random_int](http://php.net/manual/en/function.random-int.php), otherwise we use the
-[Mcrypt](http://it.php.net/manual/en/book.mcrypt.php) extension or /dev/urandom source with a mixer
-function provided by . If you don't have a secure random source in your environment the component
+[Mcrypt](http://it.php.net/manual/en/book.mcrypt.php) extension or /dev/urandom source.
+If you don't have a secure random source in your environment the component
 will use the library [ircmaxell/RandomLib](https://github.com/ircmaxell/RandomLib) with a
 medium strength generator.
 

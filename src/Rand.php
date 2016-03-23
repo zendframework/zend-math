@@ -40,7 +40,7 @@ abstract class Rand
             return false;
         }
 
-        if (version_compare(PHP_VERSION, '7.0.0') >= 0) {
+        if (function_exists('random_bytes')) { // available in PHP 7
             return random_bytes($length);
         }
         if (function_exists('mcrypt_create_iv')) {
@@ -114,7 +114,7 @@ abstract class Rand
                 'The min parameter must be lower than max parameter'
             );
         }
-        if (version_compare(PHP_VERSION, '7.0.0') >= 0) {
+        if (function_exists('random_int')) { // available in PHP 7
             return random_int($min, $max);
         }
         $range = $max - $min;
