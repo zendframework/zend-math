@@ -18,7 +18,7 @@
     "suggest": {
         "ext-bcmath": "If using the bcmath functionality",
         "ext-gmp": "If using the gmp functionality",
-        "ircmaxell/random-lib": "Fallback random byte generator for Zend\\Math\\Rand if OpenSSL/Mcrypt extensions are unavailable"
+        "ircmaxell/random-lib": "Fallback random byte generator for Zend\\Math\\Rand if Mcrypt extensions is unavailable"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

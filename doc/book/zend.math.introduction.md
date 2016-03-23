@@ -12,20 +12,13 @@ We expect to add more functionalities in the future.
 
 `Zend\Math\Rand` implements a random number generator that is able to generate random numbers for
 general purpose usage and for cryptographic scopes. To generate good random numbers this component
-uses the [OpenSSL](http://php.net/manual/en/book.openssl.php) and the
-[Mcrypt](http://it.php.net/manual/en/book.mcrypt.php) extension of PHP. If you don't have the
-OpenSSL or the Mcrypt extension installed in your environment the component will use the
-[mt\_rand](http://it.php.net/manual/en/function.mt-rand.php) function of PHP as fallback. The
-`mt_rand` is not considered secure for cryptographic purpose, that means if you will try to use it
-to generate secure random number the class will throw an exception.
-
-In particular, the algorithm that generates random bytes in `Zend\Math\Rand` tries to call the
-[openssl\_random\_pseudo\_bytes](http://it.php.net/manual/en/function.openssl-random-pseudo-bytes.php)
-function of the OpenSSL extension if installed. If the OpenSSL extension is not present in the
-system the algorithm tries to use the the
-[mcrypt\_create\_iv](http://it.php.net/manual/en/function.mcrypt-create-iv.php) function of the
-Mcrypt extension (using the `MCRYPT_DEV_URANDOM` parameter). Finally, if the OpenSSL and Mcrypt are
-not installed the generator uses the `mt_rand` function of PHP.
+uses different approaches. If PHP 7 is running we used the cryptographically secure pseudo-random
+functions [random_bytes](http://php.net/manual/en/function.random-bytes.php) and
+[random_int](http://php.net/manual/en/function.random-int.php), otherwise we use the
+[Mcrypt](http://it.php.net/manual/en/book.mcrypt.php) extension or /dev/urandom source with a mixer
+function provided by . If you don't have a secure random source in your environment the component
+will use the library [ircmaxell/RandomLib](https://github.com/ircmaxell/RandomLib) with a
+medium strength generator.
 
 The `Zend\Math\Rand` class offers the following methods to generate random values:
 
@@ -41,8 +34,8 @@ In all these methods the parameter `$strong` specify the usage of a strong rando
 We suggest to set the $strong to true if you need to generate random number for cryptographic and
 security implementation.
 
-If `$strong` is set to true and you try to generate random values in a PHP environment without the
-OpenSSL and the Mcrypt extensions the component will throw an Exception.
+If `$strong` is set to true and you try to generate random values in a PHP environment without a
+secure pseudo-random source the component will throw an Exception.
 
 Below we reported an example on how to generate random data using `Zend\Math\Rand`.
 
