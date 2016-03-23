@@ -3,8 +3,8 @@
 `Zend\Math` namespace provides general mathematical functions. So far the supported functionalities
 are:
 
-> -   `Zend\Math\Rand`, a random number generator;
-- `Zend\Math\BigInteger`, a library to manage big integers.
+* `Zend\Math\Rand`, a random number generator;
+* `Zend\Math\BigInteger`, a library to manage big integers.
 
 We expect to add more functionalities in the future.
 
@@ -29,11 +29,11 @@ not installed the generator uses the `mt_rand` function of PHP.
 
 The `Zend\Math\Rand` class offers the following methods to generate random values:
 
-> -   `getBytes($length, $strong = false)` to generate a random set of `$length` bytes;
-- `getBoolean($strong = false)` to generate a random boolean value (true or false);
-- `getInteger($min, $max, $strong = false)` to generate a random integer between `$min` and `$max`;
-- `getFloat($strong = false)` to generate a random float number between 0 and 1;
-- `getString($length, $charlist = null, $strong = false)` to generate a random string of $length
+* `getBytes($length, $strong = false)` to generate a random set of `$length` bytes;
+* `getBoolean($strong = false)` to generate a random boolean value (true or false);
+* `getInteger($min, $max, $strong = false)` to generate a random integer between `$min` and `$max`;
+* `getFloat($strong = false)` to generate a random float number between 0 and 1;
+* `getString($length, $charlist = null, $strong = false)` to generate a random string of $length
 characters using the alphabet $charlist (if not provided the default alphabet is the
 [Base64](http://en.wikipedia.org/wiki/Base64)).
 
@@ -78,22 +78,22 @@ extensions as adapters.
 
 The mathematical functions implemented in `Zend\Math\BigInteger\BigInteger` are:
 
-> -   `add($leftOperand, $rightOperand)`, add two big integers;
-- `sub($leftOperand, $rightOperand)`, subtract two big integers;
-- `mul($leftOperand, $rightOperand)`, multiply two big integers;
-- `div($leftOperand, $rightOperand)`, divide two big integers (this method returns only integer part
+* `add($leftOperand, $rightOperand)`, add two big integers;
+* `sub($leftOperand, $rightOperand)`, subtract two big integers;
+* `mul($leftOperand, $rightOperand)`, multiply two big integers;
+* `div($leftOperand, $rightOperand)`, divide two big integers (this method returns only integer part
 of result);
-- `pow($operand, $exp)`, raise a big integers to another;
-- `sqrt($operand)`, get the square root of a big integer;
-- `abs($operand)`, get the absolute value of a big integer;
-- `mod($leftOperand, $modulus)`, get modulus of a big integer;
-- `powmod($leftOperand, $rightOperand, $modulus)`, raise a big integer to another, reduced by a
+* `pow($operand, $exp)`, raise a big integers to another;
+* `sqrt($operand)`, get the square root of a big integer;
+* `abs($operand)`, get the absolute value of a big integer;
+* `mod($leftOperand, $modulus)`, get modulus of a big integer;
+* `powmod($leftOperand, $rightOperand, $modulus)`, raise a big integer to another, reduced by a
 specified modulus;
-- `comp($leftOperand, $rightOperand)`, compare two big integers, returns &lt; 0 if leftOperand is
+* `comp($leftOperand, $rightOperand)`, compare two big integers, returns &lt; 0 if leftOperand is
 less than rightOperand; &gt; 0 if leftOperand is greater than rightOperand, and 0 if they are equal;
-- `intToBin($int, $twoc = false)`, convert big integer into it's binary number representation;
-- `binToInt($bytes, $twoc = false)`, convert binary number into big integer;
-- `baseConvert($operand, $fromBase, $toBase = 10)`, convert a number between arbitrary bases;
+* `intToBin($int, $twoc = false)`, convert big integer into it's binary number representation;
+* `binToInt($bytes, $twoc = false)`, convert binary number into big integer;
+* `baseConvert($operand, $fromBase, $toBase = 10)`, convert a number between arbitrary bases;
 
 Below is reported an example using the BC Math adapter to calculate the sum of two integer random
 numbers with 100 digits.
