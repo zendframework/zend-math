@@ -18,7 +18,11 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#16](https://github.com/zendframework/zend-math/pull/16) updates
+  `Zend\Math\Rand` to use PHP 7's `random_bytes()` and `random_int()` when
+  detected, and fallback to `ircmaxell/RandomLib` otherwise, instead of using
+  either mcrypt or openssl. This provides more cryptographically secure
+  pseudo-random generation.
 
 ## 2.6.1 - TBD
 
