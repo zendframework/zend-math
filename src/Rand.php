@@ -54,7 +54,7 @@ abstract class Rand
         if (true === $strong && false === $checkAlternatives) {
             throw new Exception\RuntimeException(
                 'This PHP environment doesn\'t support secure random number generation. ' .
-                'Please consider installing Mcrypt extension or use PHP 7'
+                'Please consider either installing ext/mcrypt or upgrading to PHP 7'
             );
         }
         $generator = self::getAlternativeGenerator();
@@ -73,8 +73,8 @@ abstract class Rand
         }
         if (!class_exists('RandomLib\\Factory')) {
             throw new Exception\RuntimeException(
-                'The RandomLib fallback pseudorandom number generator (PRNG) '
-                . ' must be installed in the absence of a secure source'
+                'The RandomLib fallback pseudorandom generator is not installed. '.
+                'Please install it to support secure random numbers'
             );
         }
         $factory = new RandomLib\Factory;
