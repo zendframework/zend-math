@@ -45,7 +45,7 @@ abstract class Rand
 
         require_once 'vendor/paragonie/random_compat/lib/random.php';
         try {
-          return random_bytes(32);
+            return random_bytes(32);
         } catch (Exception $e) {
             throw new Exception\RuntimeException(
                 'This PHP environment doesn\'t support secure random number generation. ' .

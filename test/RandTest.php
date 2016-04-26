@@ -9,7 +9,6 @@
 
 namespace ZendTest\Math;
 
-use Zend\Math;
 use Zend\Math\Rand;
 
 /**
