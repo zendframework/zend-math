@@ -20,8 +20,8 @@ class RandTest extends \PHPUnit_Framework_TestCase
     public static function provideRandInt()
     {
         return [
-            [2, 1, 10000, 100, 0.9, 1.1, false],
-            [2, 1, 10000, 100, 0.8, 1.2, true]
+            [2, 1, 10000, 100, 0.9, 1.1],
+            [2, 1, 10000, 100, 0.8, 1.2]
         ];
     }
 
@@ -85,16 +85,12 @@ class RandTest extends \PHPUnit_Framework_TestCase
      * and test if the numbers are above or below the line y=x with a
      * frequency range of [$min, $max]
      *
-     * Note: this code is inspired by the random number generator test
-     * included in the PHP-CryptLib project of Anthony Ferrara
-     * @see https://github.com/ircmaxell/PHP-CryptLib
-     *
      * @dataProvider provideRandInt
      */
-    public function testRandInteger($num, $valid, $cycles, $tot, $min, $max, $strong)
+    public function testRandInteger($num, $valid, $cycles, $tot, $min, $max)
     {
         try {
-            $test = Rand::getBytes(1, $strong);
+            $test = Rand::getBytes(1);
         } catch (\Zend\Math\Exception\RuntimeException $e) {
             $this->markTestSkipped($e->getMessage());
         }
@@ -105,8 +101,8 @@ class RandTest extends \PHPUnit_Framework_TestCase
             $up   = 0;
             $down = 0;
             for ($i = 0; $i < $cycles; $i++) {
-                $x = Rand::getInteger(0, $tot, $strong);
-                $y = Rand::getInteger(0, $tot, $strong);
+                $x = Rand::getInteger(0, $tot);
+                $y = Rand::getInteger(0, $tot);
                 if ($x > $y) {
                     $up++;
                 } elseif ($x < $y) {
@@ -174,28 +170,5 @@ class RandTest extends \PHPUnit_Framework_TestCase
             $this->assertEquals(strlen($rand), $length);
             $this->assertEquals(1, preg_match('#^[0-9a-zA-Z+/]+$#', $rand));
         }
-    }
-
-    public function testHashTimingSourceStrengthIsVeryLow()
-    {
-        $this->assertEquals(1, (string) Math\Source\HashTiming::getStrength());
-    }
-
-    public function testHashTimingSourceStrengthIsRandomWithCorrectLength()
-    {
-        $source = new Math\Source\HashTiming;
-        $rand = $source->generate(32);
-        $this->assertEquals(32, strlen($rand));
-        $rand2 = $source->generate(32);
-        $this->assertNotEquals($rand, $rand2);
-    }
-
-    public function testAltGeneratorIsRandomWithCorrectLength()
-    {
-        $source = Math\Rand::getAlternativeGenerator();
-        $rand = $source->generate(32);
-        $this->assertEquals(32, strlen($rand));
-        $rand2 = $source->generate(32);
-        $this->assertNotEquals($rand, $rand2);
     }
 }
