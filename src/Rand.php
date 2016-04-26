@@ -33,20 +33,17 @@ abstract class Rand
      */
     public static function getBytes($length)
     {
-        $length = (int) $length;
-
-        if ($length <= 0) {
-            return false;
-        }
-
-        if (function_exists('random_bytes')) { // available in PHP 7
-            return random_bytes($length);
-        }
-
-        require_once 'vendor/paragonie/random_compat/lib/random.php';
         try {
-            return random_bytes(32);
-        } catch (Exception $e) {
+            return random_bytes($length);
+        } catch (\TypeError $e) {
+            throw new Exception\InvalidArgumentException(
+                'Invalid parameter provided to getBytes(length)'
+            );
+        } catch (\Error $e) {
+            throw new Exception\DomainException(
+                'The length must be a positive number in getBytes(length)'
+            );
+        } catch (\Exception $e) {
             throw new Exception\RuntimeException(
                 'This PHP environment doesn\'t support secure random number generation. ' .
                 'Please consider upgrading to PHP 7'
@@ -75,41 +72,22 @@ abstract class Rand
      */
     public static function getInteger($min, $max)
     {
-        if ($min > $max) {
-            throw new Exception\DomainException(
-                'The min parameter must be lower than max parameter'
-            );
-        }
-        if (function_exists('random_int')) { // available in PHP 7
+        try {
             return random_int($min, $max);
-        }
-        $range = $max - $min;
-        if ($range == 0) {
-            return $max;
-        } elseif ($range > PHP_INT_MAX || is_float($range)) {
+        } catch (\TypeError $e) {
+            throw new Exception\InvalidArgumentException(
+                'Invalid parameters provided to getInteger(min, max)'
+            );
+        } catch (\Error $e) {
             throw new Exception\DomainException(
-                'The supplied range is too great to generate'
+                'The min parameter must be lower than max in getInteger(min, max)'
+            );
+        } catch (\Exception $e) {
+            throw new Exception\RuntimeException(
+                'This PHP environment doesn\'t support secure random number generation. ' .
+                'Please consider upgrading to PHP 7'
             );
         }
-
-        // calculate number of bits required to store range on this machine
-        $r = $range;
-        $bits = 0;
-        while ($r) {
-            $bits++;
-            $r >>= 1;
-        }
-
-        $bits   = (int) max($bits, 1);
-        $bytes  = (int) max(ceil($bits / 8), 1);
-        $filter = (int) ((1 << $bits) - 1);
-
-        do {
-            $rnd  = hexdec(bin2hex(static::getBytes($bytes)));
-            $rnd &= $filter;
-        } while ($rnd > $range);
-
-        return ($min + $rnd);
     }
 
     /**
