@@ -141,14 +141,11 @@ abstract class Rand
             return str_repeat($charlist, $length);
         }
 
-        $bytes  = static::getBytes($length);
-        $pos    = 0;
         $result = '';
         for ($i = 0; $i < $length; $i++) {
-            $pos     = ($pos + ord($bytes[$i])) % $listLen;
+            $pos     = static::getInteger(0, $listLen - 1);
             $result .= $charlist[$pos];
         }
-
         return $result;
     }
 }
