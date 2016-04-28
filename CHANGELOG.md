@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.0.0 - TBD
+## 3.0.0 - 2016-04-28
 
 This version contains a number of changes to required dependencies, error
 handling, and internals; please read [the migration document](doc/book/migration.md)
