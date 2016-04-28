@@ -62,13 +62,15 @@ Additionally, in cases where you are not using PHP 7 and your PHP environment
 does not provide a secure random source, we now throw a
 `Zend\Math\Exception\RuntimeException` with the following message:
 
-> This PHP environment doesn't support secure random number generation.
-> Please consider upgrading to PHP 7.
+```text
+This PHP environment doesn't support secure random number generation.
+Please consider upgrading to PHP 7.
+```
 
 This message should appear if your are using PHP versions less than 7 on Windows
 machines without one of the following extensions or libraries installed:
 
-- [Mcrypt](http://php.net/mcrypt);
-- [libsodium](https://pecl.php.net/package/libsodium);
-- [CAPICOM](https://en.wikipedia.org/wiki/CAPICOM);
-- [OpenSSL](http://php.net/openssl).
+- [Mcrypt](http://php.net/mcrypt)
+- [libsodium](https://pecl.php.net/package/libsodium)
+- [CAPICOM](https://en.wikipedia.org/wiki/CAPICOM)
+- [OpenSSL](http://php.net/openssl)
