@@ -11,9 +11,10 @@ functionalities are:
 
 # Migration notes from v2 to v3
 
-[Here](doc/book/migration.md) we reported some notes for the migration from v2
-to v3 with all the potential BC breaks.
+[We document migration notes from v2 to v3](doc/book/migration.md), providing details
+of potential BC breaks and/or API differences you may need to be aware of.
 
--
+# Miscellany
+
 - File issues at https://github.com/zendframework/zend-math/issues
 - Documentation is at http://framework.zend.com/manual/current/en/index.html#zend-math
