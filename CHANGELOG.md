@@ -15,6 +15,8 @@ for full details.
 - [#18](https://github.com/zendframework/zend-math/pull/18) adds a requirement
   on `paragonie/random_compat` for polyfilling PHP 7's `random_bytes()` and
   `random_int()` functionality.
+- [#20](https://github.com/zendframework/zend-math/pull/20) prepares and
+  publishes documentation to https://zendframework.github.io/zend-math/
 
 ### Deprecated
 
