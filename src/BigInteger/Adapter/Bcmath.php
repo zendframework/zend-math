@@ -256,7 +256,7 @@ class Bcmath implements AdapterInterface
             $bytes = ~$bytes;
         }
 
-        $len = (strlen($bytes) + 3) & 0xfffffffc;
+        $len = (mb_strlen($bytes, '8bit') + 3) & 0xfffffffc;
         $bytes = str_pad($bytes, $len, chr(0), STR_PAD_LEFT);
 
         $result = '0';
@@ -311,7 +311,7 @@ class Bcmath implements AdapterInterface
             $decimal = $operand;
         } else {
             $decimal = '0';
-            for ($i = 0, $len  = strlen($operand); $i < $len; $i++) {
+            for ($i = 0, $len  = mb_strlen($operand, '8bit'); $i < $len; $i++) {
                 $decimal = bcmul($decimal, $fromBase);
 
                 $remainder = ($fromBase <= 36)
