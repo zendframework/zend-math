@@ -17,4 +17,4 @@ of potential BC breaks and/or API differences you may need to be aware of.
 # Miscellany
 
 - File issues at https://github.com/zendframework/zend-math/issues
-- Documentation is at http://framework.zend.com/manual/current/en/index.html#zend-math
+- Documentation is at https://zendframework.github.io/zend-math/
