@@ -2,11 +2,19 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 2.7.1 - TBD
+## 3.0.0 - TBD
+
+This version contains a number of changes to required dependencies, error
+handling, and internals; please read [the migration document](doc/book/migration.md)
+for full details.
 
 ### Added
 
-- Nothing.
+- [#18](https://github.com/zendframework/zend-math/pull/18) adds a requirement
+  on `ext/mbstring`.
+- [#18](https://github.com/zendframework/zend-math/pull/18) adds a requirement
+  on `paragonie/random_compat` for polyfilling PHP 7's `random_bytes()` and
+  `random_int()` functionality.
 
 ### Deprecated
 
@@ -14,11 +22,29 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- Nothing.
+- [#18](https://github.com/zendframework/zend-math/pull/18) removes the
+  `$strong` optional parameter from the following methods, as the component now
+  ensures a cryptographically secure pseudo-random number generator is always
+  used:
+  - `Rand::getBytes($length)`
+  - `Rand::getBoolean()`
+  - `Rand::getInteger($min, $max)`
+  - `Rand::getFloat()`
+  - `Rand::getString($length, $charlist = null)`
+- [#18](https://github.com/zendframework/zend-math/pull/18) removes the
+  requirement on ircmaxell/random-lib, in favor of paragonie/random_compat (as
+  noted above); this also resulted in the removal of:
+  - direct usage of mcrypt (this is delegated to paragonie/random_compat)
+  - direct usage of `/dev/urandom` or `COM` (this is delegated to
+    `random_bytes()` and/or paragonie/random_compat)
+  - `Zend\Math\Source\HashTiming`, as it was used only with `RandomLib`.
 
 ### Fixed
 
-- Nothing.
+- [#18](https://github.com/zendframework/zend-math/pull/18) updates the code to
+  replace usage of `substr()` and `strlen()` with `mb_substr()` and
+  `mb_strlen()`; these ensure that all string manipulations within the component
+  remain binary safe.
 
 ## 2.7.0 - 2016-04-07
 
