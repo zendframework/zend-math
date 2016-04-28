@@ -21,9 +21,8 @@ matrix:
       env:
         - EXECUTE_TEST_COVERALLS=true
     - php: 7
-    - php: hhvm 
+    - php: hhvm
   allow_failures:
-    - php: 7
     - php: hhvm
 
 notifications:

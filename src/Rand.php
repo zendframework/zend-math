@@ -28,73 +28,37 @@ abstract class Rand
      * If PHP 7 is running we use the random_bytes() function
      *
      * @param  int $length
-     * @param  bool $strong true if you need a strong random generator (cryptography)
      * @return string
      * @throws Exception\RuntimeException
      */
-    public static function getBytes($length, $strong = false)
+    public static function getBytes($length)
     {
-        $length = (int) $length;
-
-        if ($length <= 0) {
-            return false;
-        }
-
-        if (function_exists('random_bytes')) { // available in PHP 7
+        try {
             return random_bytes($length);
-        }
-        if (function_exists('mcrypt_create_iv')) {
-            $bytes = mcrypt_create_iv($length, MCRYPT_DEV_URANDOM);
-            if ($bytes !== false && strlen($bytes) === $length) {
-                return $bytes;
-            }
-        }
-        $checkAlternatives = (file_exists('/dev/urandom') && is_readable('/dev/urandom'))
-            || class_exists('\\COM', false);
-        if (true === $strong && false === $checkAlternatives) {
+        } catch (\TypeError $e) {
+            throw new Exception\InvalidArgumentException(
+                'Invalid parameter provided to getBytes(length)'
+            );
+        } catch (\Error $e) {
+            throw new Exception\DomainException(
+                'The length must be a positive number in getBytes(length)'
+            );
+        } catch (\Exception $e) {
             throw new Exception\RuntimeException(
                 'This PHP environment doesn\'t support secure random number generation. ' .
-                'Please consider either installing ext/mcrypt or upgrading to PHP 7'
+                'Please consider upgrading to PHP 7'
             );
         }
-        $generator = self::getAlternativeGenerator();
-        return $generator->generate($length);
-    }
-
-    /**
-     * Retrieve a fallback/alternative RNG generator
-     *
-     * @return RandomLib\Generator
-     */
-    public static function getAlternativeGenerator()
-    {
-        if (null !== static::$generator) {
-            return static::$generator;
-        }
-        if (!class_exists('RandomLib\\Factory')) {
-            throw new Exception\RuntimeException(
-                'The RandomLib fallback pseudorandom generator is not installed. '.
-                'Please install it to support secure random numbers'
-            );
-        }
-        $factory = new RandomLib\Factory;
-        $factory->registerSource(
-            'HashTiming',
-            'Zend\Math\Source\HashTiming'
-        );
-        static::$generator = $factory->getMediumStrengthGenerator();
-        return static::$generator;
     }
 
     /**
      * Generate random boolean
      *
-     * @param  bool $strong true if you need a strong random generator (cryptography)
      * @return bool
      */
-    public static function getBoolean($strong = false)
+    public static function getBoolean()
     {
-        $byte = static::getBytes(1, $strong);
+        $byte = static::getBytes(1);
         return (bool) (ord($byte) % 2);
     }
 
@@ -103,47 +67,27 @@ abstract class Rand
      *
      * @param  int $min
      * @param  int $max
-     * @param  bool $strong true if you need a strong random generator (cryptography)
      * @return int
      * @throws Exception\DomainException
      */
-    public static function getInteger($min, $max, $strong = false)
+    public static function getInteger($min, $max)
     {
-        if ($min > $max) {
-            throw new Exception\DomainException(
-                'The min parameter must be lower than max parameter'
-            );
-        }
-        if (function_exists('random_int')) { // available in PHP 7
+        try {
             return random_int($min, $max);
-        }
-        $range = $max - $min;
-        if ($range == 0) {
-            return $max;
-        } elseif ($range > PHP_INT_MAX || is_float($range)) {
+        } catch (\TypeError $e) {
+            throw new Exception\InvalidArgumentException(
+                'Invalid parameters provided to getInteger(min, max)'
+            );
+        } catch (\Error $e) {
             throw new Exception\DomainException(
-                'The supplied range is too great to generate'
+                'The min parameter must be lower than max in getInteger(min, max)'
+            );
+        } catch (\Exception $e) {
+            throw new Exception\RuntimeException(
+                'This PHP environment doesn\'t support secure random number generation. ' .
+                'Please consider upgrading to PHP 7'
             );
         }
-
-        // calculate number of bits required to store range on this machine
-        $r = $range;
-        $bits = 0;
-        while ($r) {
-            $bits++;
-            $r >>= 1;
-        }
-
-        $bits   = (int) max($bits, 1);
-        $bytes  = (int) max(ceil($bits / 8), 1);
-        $filter = (int) ((1 << $bits) - 1);
-
-        do {
-            $rnd  = hexdec(bin2hex(static::getBytes($bytes, $strong)));
-            $rnd &= $filter;
-        } while ($rnd > $range);
-
-        return ($min + $rnd);
     }
 
     /**
@@ -155,12 +99,11 @@ abstract class Rand
      * and we fix the exponent to the bias (1023). In this way we generate
      * a float of 1.mantissa.
      *
-     * @param  bool $strong  true if you need a strong random generator (cryptography)
      * @return float
      */
-    public static function getFloat($strong = false)
+    public static function getFloat()
     {
-        $bytes    = static::getBytes(7, $strong);
+        $bytes    = static::getBytes(7);
         $bytes[6] = $bytes[6] | chr(0xF0);
         $bytes   .= chr(63); // exponent bias (1023)
         list(, $float) = unpack('d', $bytes);
@@ -176,11 +119,10 @@ abstract class Rand
      *
      * @param  int $length
      * @param  string|null $charlist
-     * @param  bool $strong  true if you need a strong random generator (cryptography)
      * @return string
      * @throws Exception\DomainException
      */
-    public static function getString($length, $charlist = null, $strong = false)
+    public static function getString($length, $charlist = null)
     {
         if ($length < 1) {
             throw new Exception\DomainException('Length should be >= 1');
@@ -189,24 +131,21 @@ abstract class Rand
         // charlist is empty or not provided
         if (empty($charlist)) {
             $numBytes = ceil($length * 0.75);
-            $bytes    = static::getBytes($numBytes, $strong);
-            return substr(rtrim(base64_encode($bytes), '='), 0, $length);
+            $bytes    = static::getBytes($numBytes);
+            return mb_substr(rtrim(base64_encode($bytes), '='), 0, $length, '8bit');
         }
 
-        $listLen = strlen($charlist);
+        $listLen = mb_strlen($charlist, '8bit');
 
         if ($listLen == 1) {
             return str_repeat($charlist, $length);
         }
 
-        $bytes  = static::getBytes($length, $strong);
-        $pos    = 0;
         $result = '';
         for ($i = 0; $i < $length; $i++) {
-            $pos     = ($pos + ord($bytes[$i])) % $listLen;
+            $pos     = static::getInteger(0, $listLen - 1);
             $result .= $charlist[$pos];
         }
-
         return $result;
     }
 }
