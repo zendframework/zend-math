@@ -1,0 +1,13 @@
+docs_dir: doc/book
+site_dir: doc/html
+pages:
+    - index.md
+    - Intro: intro.md
+    - Reference:
+        - "Random Number Generation": rand.md
+        - "Big Integers": big-integer.md
+        - Migration: migration.md
+site_name: zend-math
+site_description: zend-math
+repo_url: 'https://github.com/zendframework/zend-math'
+copyright: 'Copyright (c) 2016 <a href="http://www.zend.com/">Zend Technologies USA Inc.</a>'

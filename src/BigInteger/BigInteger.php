@@ -78,7 +78,7 @@ abstract class BigInteger
         if (extension_loaded('gmp')) {
             return static::factory('Gmp');
         }
-        
+
         if (extension_loaded('bcmath')) {
             return static::factory('Bcmath');
         }
