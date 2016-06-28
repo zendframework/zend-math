@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "zend-math\n\n\n\n\n\n\nZend\\Math\n provides general mathematical functions. So far the supported\nfunctionalities are:\n\n\n\n\nZend\\Math\\Rand\n, a random number generator;\n\n\nZend\\Math\\BigInteger\n, a library to manage big integers.\n\n\n\n\nMigration notes from v2 to v3\n\n\nWe document migration notes from v2 to v3\n, providing details\nof potential BC breaks and/or API differences you may need to be aware of.\n\n\nMiscellany\n\n\n\n\nFile issues at https://github.com/zendframework/zend-math/issues\n\n\nDocumentation is at http://framework.zend.com/manual/current/en/index.html#zend-math",
+            "text": "zend-math\n\n\n\n\n\n\nZend\\Math\n provides general mathematical functions. So far the supported\nfunctionalities are:\n\n\n\n\nZend\\Math\\Rand\n, a random number generator;\n\n\nZend\\Math\\BigInteger\n, a library to manage big integers.\n\n\n\n\nMigration notes from v2 to v3\n\n\nWe document migration notes from v2 to v3\n, providing details\nof potential BC breaks and/or API differences you may need to be aware of.\n\n\nMiscellany\n\n\n\n\nFile issues at https://github.com/zendframework/zend-math/issues\n\n\nDocumentation is at https://zendframework.github.io/zend-math/",
             "title": "Home"
         },
         {
@@ -17,7 +17,7 @@
         },
         {
             "location": "/#miscellany",
-            "text": "File issues at https://github.com/zendframework/zend-math/issues  Documentation is at http://framework.zend.com/manual/current/en/index.html#zend-math",
+            "text": "File issues at https://github.com/zendframework/zend-math/issues  Documentation is at https://zendframework.github.io/zend-math/",
             "title": "Miscellany"
         },
         {
