@@ -9,20 +9,11 @@
 
 namespace Zend\Math;
 
-use RandomLib;
-
 /**
  * Pseudorandom number generator (PRNG)
  */
 abstract class Rand
 {
-    /**
-     * Alternative random byte generator using RandomLib
-     *
-     * @var RandomLib\Generator
-     */
-    protected static $generator = null;
-
     /**
      * Generate random bytes using different approaches
      * If PHP 7 is running we use the random_bytes() function
