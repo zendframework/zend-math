@@ -62,6 +62,17 @@ class HashTiming implements RandomLib\Source
     }
 
     /**
+     * If the source is currently available.
+     * Reasons might be because the library is not installed
+     *
+     * @return bool
+     */
+    public static function isSupported()
+    {
+        return true;
+    }
+
+    /**
      * Generate a random string of the specified size
      *
      * @param int $size The size of the requested random string
