@@ -146,8 +146,10 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 
     public function testDivisionByZeroRaisesException()
     {
-        $this->setExpectedException('Zend\Math\BigInteger\Exception\DivisionByZeroException',
-                                    'Division by zero');
+        $this->setExpectedException(
+            'Zend\Math\BigInteger\Exception\DivisionByZeroException',
+            'Division by zero'
+        );
         $this->adapter->div('12345', '0');
     }
 
