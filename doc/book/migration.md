@@ -24,7 +24,7 @@ encoding.
 
 ## We removed the $strong optional parameter
 
-In `Zend\Math\Rand`, we removed the usage of the `$strong` optional paramter for
+In `Zend\Math\Rand`, we removed the usage of the `$strong` optional parameter for
 the random number generator. By default, all random numbers produced in version
 3 releases will use a secure pseudo-random number generator
 ([CSPRNG](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator)).
