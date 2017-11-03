@@ -11,7 +11,7 @@ functionalities are:
 
 # Migration notes from v2 to v3
 
-[We document migration notes from v2 to v3](doc/book/migration.md), providing details
+[We document migration notes from v2 to v3](docs/book/migration.md), providing details
 of potential BC breaks and/or API differences you may need to be aware of.
 
 # Miscellany
