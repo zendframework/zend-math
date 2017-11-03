@@ -9,12 +9,13 @@
 
 namespace ZendTest\Math\BigInteger;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Math\BigInteger\BigInteger as BigInt;
 
 /**
  * @group      Zend_Math
  */
-class BigIntegerTest extends \PHPUnit_Framework_TestCase
+class BigIntegerTest extends TestCase
 {
     public function testFactoryCreatesBcmathAdapter()
     {
@@ -46,7 +47,7 @@ class BigIntegerTest extends \PHPUnit_Framework_TestCase
 
     public function testFactoryUnknownAdapterRaisesException()
     {
-        $this->setExpectedException('Zend\Math\Exception\ExceptionInterface');
+        $this->expectException('Zend\Math\Exception\ExceptionInterface');
         BigInt::factory('unknown');
     }
 }

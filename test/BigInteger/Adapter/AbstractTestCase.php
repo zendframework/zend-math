@@ -9,9 +9,10 @@
 
 namespace ZendTest\Math\BigInteger\Adapter;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Math\BigInteger\Adapter\AdapterInterface;
 
-abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
+abstract class AbstractTestCase extends TestCase
 {
     /**
      * @var AdapterInterface
