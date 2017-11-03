@@ -18,7 +18,7 @@ class BigIntegerTest extends \PHPUnit_Framework_TestCase
 {
     public function testFactoryCreatesBcmathAdapter()
     {
-        if (!extension_loaded('bcmath')) {
+        if (! extension_loaded('bcmath')) {
             $this->markTestSkipped('Missing bcmath extensions');
         }
 
@@ -28,7 +28,7 @@ class BigIntegerTest extends \PHPUnit_Framework_TestCase
 
     public function testFactoryCreatesGmpAdapter()
     {
-        if (!extension_loaded('gmp')) {
+        if (! extension_loaded('gmp')) {
             $this->markTestSkipped('Missing gmp extensions');
         }
 
@@ -38,7 +38,7 @@ class BigIntegerTest extends \PHPUnit_Framework_TestCase
 
     public function testFactoryUsesDefaultAdapter()
     {
-        if (!extension_loaded('bcmath') && !extension_loaded('gmp')) {
+        if (! extension_loaded('bcmath') && ! extension_loaded('gmp')) {
             $this->markTestSkipped('Missing bcmath or gmp extensions');
         }
         $this->assertInstanceOf('Zend\Math\BigInteger\Adapter\AdapterInterface', BigInt::factory());

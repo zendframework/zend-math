@@ -18,7 +18,7 @@ class BcmathTest extends AbstractTestCase
 {
     public function setUp()
     {
-        if (!extension_loaded('bcmath')) {
+        if (! extension_loaded('bcmath')) {
             $this->markTestSkipped('Missing ext/bcmath');
             return;
         }
