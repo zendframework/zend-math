@@ -18,7 +18,7 @@ class GmpTest extends AbstractTestCase
 {
     public function setUp()
     {
-        if (!extension_loaded('gmp')) {
+        if (! extension_loaded('gmp')) {
             $this->markTestSkipped('Missing ext/gmp');
             return;
         }

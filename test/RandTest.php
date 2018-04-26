@@ -9,12 +9,13 @@
 
 namespace ZendTest\Math;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Math\Rand;
 
 /**
  * @group      Zend_Math
  */
-class RandTest extends \PHPUnit_Framework_TestCase
+class RandTest extends TestCase
 {
     public static function provideRandInt()
     {
@@ -33,31 +34,25 @@ class RandTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    /**
-     * @expectedException Zend\Math\Exception\InvalidArgumentException
-     * @expectedExceptionMessage Invalid parameter provided to getBytes(length)
-     */
     public function testWrongRandBytesParam()
     {
-        $rand = Rand::getBytes('foo');
+        $this->expectException('Zend\Math\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid parameter provided to getBytes(length)');
+        Rand::getBytes('foo');
     }
 
-    /**
-     * @expectedException Zend\Math\Exception\DomainException
-     * @expectedExceptionMessage The length must be a positive number in getBytes(length)
-     */
     public function testZeroRandBytesParam()
     {
-        $rand = Rand::getBytes(0);
+        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectExceptionMessage('The length must be a positive number in getBytes(length)');
+        Rand::getBytes(0);
     }
 
-    /**
-     * @expectedException Zend\Math\Exception\DomainException
-     * @expectedExceptionMessage The length must be a positive number in getBytes(length)
-     */
     public function testNegativeRandBytesParam()
     {
-        $rand = Rand::getBytes(-1);
+        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectExceptionMessage('The length must be a positive number in getBytes(length)');
+        Rand::getBytes(-1);
     }
 
     public function testRandBoolean()
@@ -149,31 +144,25 @@ class RandTest extends \PHPUnit_Framework_TestCase
         }
     }
 
-    /**
-     * @expectedException Zend\Math\Exception\InvalidArgumentException
-     * @expectedExceptionMessage Invalid parameters provided to getInteger(min, max)
-     */
     public function testWrongFirstParamGetInteger()
     {
-        $rand = Rand::getInteger('foo', 0);
+        $this->expectException('Zend\Math\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid parameters provided to getInteger(min, max)');
+        Rand::getInteger('foo', 0);
     }
 
-    /**
-     * @expectedException Zend\Math\Exception\InvalidArgumentException
-     * @expectedExceptionMessage Invalid parameters provided to getInteger(min, max)
-     */
     public function testWrongSecondParamGetInteger()
     {
-        $rand = Rand::getInteger(0, 'foo');
+        $this->expectException('Zend\Math\Exception\InvalidArgumentException');
+        $this->expectExceptionMessage('Invalid parameters provided to getInteger(min, max)');
+        Rand::getInteger(0, 'foo');
     }
 
-    /**
-     * @expectedException Zend\Math\Exception\DomainException
-     * @expectedExceptionMessage The min parameter must be lower than max in getInteger(min, max)
-     */
     public function testIntegerRangeFail()
     {
-        $rand = Rand::getInteger(100, 0);
+        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectExceptionMessage('The min parameter must be lower than max in getInteger(min, max)');
+        Rand::getInteger(100, 0);
     }
 
     public function testIntegerRangeOverflow()
