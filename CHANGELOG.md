@@ -6,6 +6,10 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Added
 
+- [#31](https://github.com/zendframework/zend-math/pull/31) adds support for PHP 7.1 and 7.2.
+
+### Changed
+
 - Nothing.
 
 ### Deprecated
@@ -14,7 +18,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- Nothing.
+- [#31](https://github.com/zendframework/zend-math/pull/31) removes support for PHP 5.5.
+
+- [#31](https://github.com/zendframework/zend-math/pull/31) removes support for HHVM.
 
 ### Fixed
 
@@ -46,7 +52,7 @@ All notable changes to this project will be documented in this file, in reverse 
 ## 3.0.0 - 2016-04-28
 
 This version contains a number of changes to required dependencies, error
-handling, and internals; please read [the migration document](doc/book/migration.md)
+handling, and internals; please read [the migration document](docs/book/migration.md)
 for full details.
 
 ### Added
