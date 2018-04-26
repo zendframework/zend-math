@@ -8,6 +8,11 @@ All notable changes to this project will be documented in this file, in reverse 
 
 - Nothing.
 
+### Changed
+
+- [#29](https://github.com/zendframework/zend-math/pull/29) modifies how caught exceptions are re-thrown; all such cases now provide
+  the original exception as the previous exception.
+
 ### Deprecated
 
 - Nothing.
