@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2ee26a9ce6cba713f12a7834afb7bfcb",
+    "content-hash": "e5a27c10bb2a9a08f1a8e0f34e5ebc08",
     "packages": [
         {
             "name": "paragonie/random_compat",
