@@ -10,7 +10,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Changed
 
-- Nothing.
+- [#33](https://github.com/zendframework/zend-math/pull/33) modifies the `Bcmath` BigInteger class to no longer change the global
+  `bcscale`, but instead send the `0` scale value explicitly to each bcmath operation. This prevents
+  side effects when using bcmath in other scenarios.
 
 ### Deprecated
 
