@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.1.0 - TBD
+## 3.1.0 - 2018-04-26
 
 ### Added
 
@@ -14,28 +14,6 @@ All notable changes to this project will be documented in this file, in reverse 
   `bcscale`, but instead send the `0` scale value explicitly to each bcmath operation. This prevents
   side effects when using bcmath in other scenarios.
 
-### Deprecated
-
-- Nothing.
-
-### Removed
-
-- [#31](https://github.com/zendframework/zend-math/pull/31) removes support for PHP 5.5.
-
-- [#31](https://github.com/zendframework/zend-math/pull/31) removes support for HHVM.
-
-### Fixed
-
-- Nothing.
-
-## 3.0.1 - TBD
-
-### Added
-
-- Nothing.
-
-### Changed
-
 - [#29](https://github.com/zendframework/zend-math/pull/29) modifies how caught exceptions are re-thrown; all such cases now provide
   the original exception as the previous exception.
 
@@ -45,7 +23,9 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Removed
 
-- Nothing.
+- [#31](https://github.com/zendframework/zend-math/pull/31) removes support for PHP 5.5.
+
+- [#31](https://github.com/zendframework/zend-math/pull/31) removes support for HHVM.
 
 ### Fixed
 
