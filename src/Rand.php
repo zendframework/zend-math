@@ -37,16 +37,22 @@ abstract class Rand
             return random_bytes($length);
         } catch (\TypeError $e) {
             throw new Exception\InvalidArgumentException(
-                'Invalid parameter provided to getBytes(length)'
+                'Invalid parameter provided to getBytes(length)',
+                0,
+                $e
             );
         } catch (\Error $e) {
             throw new Exception\DomainException(
-                'The length must be a positive number in getBytes(length)'
+                'The length must be a positive number in getBytes(length)',
+                0,
+                $e
             );
         } catch (\Exception $e) {
             throw new Exception\RuntimeException(
                 'This PHP environment doesn\'t support secure random number generation. ' .
-                'Please consider upgrading to PHP 7'
+                'Please consider upgrading to PHP 7',
+                0,
+                $e
             );
         }
     }
@@ -76,16 +82,22 @@ abstract class Rand
             return random_int($min, $max);
         } catch (\TypeError $e) {
             throw new Exception\InvalidArgumentException(
-                'Invalid parameters provided to getInteger(min, max)'
+                'Invalid parameters provided to getInteger(min, max)',
+                0,
+                $e
             );
         } catch (\Error $e) {
             throw new Exception\DomainException(
-                'The min parameter must be lower than max in getInteger(min, max)'
+                'The min parameter must be lower than max in getInteger(min, max)',
+                0,
+                $e
             );
         } catch (\Exception $e) {
             throw new Exception\RuntimeException(
                 'This PHP environment doesn\'t support secure random number generation. ' .
-                'Please consider upgrading to PHP 7'
+                'Please consider upgrading to PHP 7',
+                0,
+                $e
             );
         }
     }
