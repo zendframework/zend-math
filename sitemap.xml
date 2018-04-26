@@ -3,16 +3,16 @@
 
     
     <url>
-     <loc>None/</loc>
-     <lastmod>2016-09-15</lastmod>
+     <loc>/</loc>
+     <lastmod>2018-04-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>None/intro/</loc>
-     <lastmod>2016-09-15</lastmod>
+     <loc>/intro/</loc>
+     <lastmod>2018-04-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -20,20 +20,20 @@
     
         
     <url>
-     <loc>None/rand/</loc>
-     <lastmod>2016-09-15</lastmod>
+     <loc>/rand/</loc>
+     <lastmod>2018-04-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/big-integer/</loc>
-     <lastmod>2016-09-15</lastmod>
+     <loc>/big-integer/</loc>
+     <lastmod>2018-04-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>None/migration/</loc>
-     <lastmod>2016-09-15</lastmod>
+     <loc>/migration/</loc>
+     <lastmod>2018-04-26</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
