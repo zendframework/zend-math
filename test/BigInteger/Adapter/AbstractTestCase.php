@@ -9,9 +9,10 @@
 
 namespace ZendTest\Math\BigInteger\Adapter;
 
+use PHPUnit\Framework\TestCase;
 use Zend\Math\BigInteger\Adapter\AdapterInterface;
 
-abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
+abstract class AbstractTestCase extends TestCase
 {
     /**
      * @var AdapterInterface
@@ -146,8 +147,8 @@ abstract class AbstractTestCase extends \PHPUnit_Framework_TestCase
 
     public function testDivisionByZeroRaisesException()
     {
-        $this->setExpectedException('Zend\Math\BigInteger\Exception\DivisionByZeroException',
-                                    'Division by zero');
+        $this->expectException('Zend\Math\BigInteger\Exception\DivisionByZeroException');
+        $this->expectExceptionMessage('Division by zero');
         $this->adapter->div('12345', '0');
     }
 

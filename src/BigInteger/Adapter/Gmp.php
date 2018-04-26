@@ -31,7 +31,7 @@ class Gmp implements AdapterInterface
         if (null === $base) {
             // scientific notation
             if (preg_match('#^(?:([1-9])\.)?([0-9]+)[eE]\+?([0-9]+)$#', $operand, $m)) {
-                if (!empty($m[1])) {
+                if (! empty($m[1])) {
                     if ($m[3] < mb_strlen($m[2], '8bit')) {
                         return false;
                     }
@@ -45,7 +45,9 @@ class Gmp implements AdapterInterface
             }
         }
 
-        set_error_handler(function () { /* Do nothing */}, \E_WARNING);
+        set_error_handler(function () {
+ /* Do nothing */
+        }, \E_WARNING);
         $res = gmp_init($sign . $operand, $base);
         restore_error_handler();
         if ($res === false) {

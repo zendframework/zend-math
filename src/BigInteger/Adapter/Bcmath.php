@@ -16,14 +16,6 @@ use Zend\Math\BigInteger\Exception;
  */
 class Bcmath implements AdapterInterface
 {
-    /**
-     * Constructor
-     * Sets Bcmath scale factor to zero
-     */
-    public function __construct()
-    {
-        bcscale(0);
-    }
 
     /**
      * Create string representing big integer in decimal form from arbitrary integer format
@@ -80,7 +72,7 @@ class Bcmath implements AdapterInterface
      */
     public function add($leftOperand, $rightOperand)
     {
-        return bcadd($leftOperand, $rightOperand);
+        return bcadd($leftOperand, $rightOperand, 0);
     }
 
     /**
@@ -92,7 +84,7 @@ class Bcmath implements AdapterInterface
      */
     public function sub($leftOperand, $rightOperand)
     {
-        return bcsub($leftOperand, $rightOperand);
+        return bcsub($leftOperand, $rightOperand, 0);
     }
 
     /**
@@ -104,7 +96,7 @@ class Bcmath implements AdapterInterface
      */
     public function mul($leftOperand, $rightOperand)
     {
-        return bcmul($leftOperand, $rightOperand);
+        return bcmul($leftOperand, $rightOperand, 0);
     }
 
     /**
@@ -124,7 +116,7 @@ class Bcmath implements AdapterInterface
             );
         }
 
-        $result = bcdiv($leftOperand, $rightOperand);
+        $result = bcdiv($leftOperand, $rightOperand, 0);
 
         return $result;
     }
@@ -138,7 +130,7 @@ class Bcmath implements AdapterInterface
      */
     public function pow($operand, $exp)
     {
-        return bcpow($operand, $exp);
+        return bcpow($operand, $exp, 0);
     }
 
     /**
@@ -149,7 +141,7 @@ class Bcmath implements AdapterInterface
      */
     public function sqrt($operand)
     {
-        return bcsqrt($operand);
+        return bcsqrt($operand, 0);
     }
 
     /**
@@ -185,7 +177,7 @@ class Bcmath implements AdapterInterface
      */
     public function powmod($leftOperand, $rightOperand, $modulus)
     {
-        return bcpowmod($leftOperand, $rightOperand, $modulus);
+        return bcpowmod($leftOperand, $rightOperand, $modulus, 0);
     }
 
     /**
@@ -199,7 +191,7 @@ class Bcmath implements AdapterInterface
      */
     public function comp($leftOperand, $rightOperand)
     {
-        return bccomp($leftOperand, $rightOperand);
+        return bccomp($leftOperand, $rightOperand, 0);
     }
 
     /**
@@ -227,7 +219,7 @@ class Bcmath implements AdapterInterface
         while (bccomp($operand, '0', 0) > 0) {
             $temp    = bcmod($operand, '16777216');
             $bytes   = chr($temp >> 16) . chr($temp >> 8) . chr($temp) . $bytes;
-            $operand = bcdiv($operand, '16777216');
+            $operand = bcdiv($operand, '16777216', 0);
         }
         $bytes = ltrim($bytes, $nb);
 
@@ -318,7 +310,7 @@ class Bcmath implements AdapterInterface
                     ? base_convert($operand[$i], $fromBase, 10)
                     : strpos($chars, $operand[$i]);
 
-                $decimal = bcadd($decimal, $remainder);
+                $decimal = bcadd($decimal, $remainder, 0);
             }
         }
 
