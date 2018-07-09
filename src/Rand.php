@@ -103,7 +103,7 @@ abstract class Rand
     }
 
     /**
-     * Generate random float (0..1)
+     * Generate random float [0..1)
      * This function generates floats with platform-dependent precision
      *
      * PHP uses double precision floating-point format (64-bit) which has
