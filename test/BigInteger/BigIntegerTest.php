@@ -68,7 +68,7 @@ class BigIntegerTest extends TestCase
             $this->markTestSkipped('Missing bcmath extensions');
         }
         BigInt::setDefaultAdapter('bcmath');
-        $result = BigInt::add(1,2);
+        $result = BigInt::add(1, 2);
         $this->assertEquals(3, $result);
     }
 }
