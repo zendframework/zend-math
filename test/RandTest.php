@@ -8,15 +8,18 @@ namespace ZendTest\Math;
 
 use Exception;
 use PHPUnit\Framework\TestCase;
+use Zend\Math\Exception\DomainException;
+use Zend\Math\Exception\InvalidArgumentException;
+use Zend\Math\Exception\RuntimeException;
 use Zend\Math\Rand;
 
 class RandTest extends TestCase
 {
-    public static $custom_random_bytes = false;
+    public static $customRandomBytes = false;
 
     public function tearDown()
     {
-        self::$custom_random_bytes = false;
+        self::$customRandomBytes = false;
     }
 
     public static function provideRandInt()
@@ -38,29 +41,29 @@ class RandTest extends TestCase
 
     public function testWrongRandBytesParam()
     {
-        $this->expectException('Zend\Math\Exception\InvalidArgumentException');
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid parameter provided to getBytes(length)');
         Rand::getBytes('foo');
     }
 
     public function testZeroRandBytesParam()
     {
-        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('The length must be a positive number in getBytes(length)');
         Rand::getBytes(0);
     }
 
     public function testNegativeRandBytesParam()
     {
-        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('The length must be a positive number in getBytes(length)');
         Rand::getBytes(-1);
     }
 
     public function testUnsupportedPlatform()
     {
-        self::$custom_random_bytes = true;
-        $this->expectException('Zend\Math\Exception\RuntimeException');
+        self::$customRandomBytes = true;
+        $this->expectException(RuntimeException::class);
         $rand = Rand::getBytes(2);
     }
 

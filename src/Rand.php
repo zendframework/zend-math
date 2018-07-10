@@ -13,6 +13,11 @@ namespace Zend\Math;
 abstract class Rand
 {
     /**
+     * @deprecated No longer used internally
+     */
+    protected static $generator = null;
+
+    /**
      * Generate random bytes using different approaches
      * If PHP 7 is running we use the random_bytes() function
      *
