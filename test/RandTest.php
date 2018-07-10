@@ -1,22 +1,27 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link      http://github.com/zendframework/zend-math for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
-
 namespace ZendTest\Math;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
+use Zend\Math\Exception\DomainException;
+use Zend\Math\Exception\InvalidArgumentException;
+use Zend\Math\Exception\RuntimeException;
 use Zend\Math\Rand;
 
-/**
- * @group      Zend_Math
- */
 class RandTest extends TestCase
 {
+    public static $customRandomBytes = false;
+
+    public function tearDown()
+    {
+        self::$customRandomBytes = false;
+    }
+
     public static function provideRandInt()
     {
         return [
@@ -36,23 +41,30 @@ class RandTest extends TestCase
 
     public function testWrongRandBytesParam()
     {
-        $this->expectException('Zend\Math\Exception\InvalidArgumentException');
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid parameter provided to getBytes(length)');
         Rand::getBytes('foo');
     }
 
     public function testZeroRandBytesParam()
     {
-        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('The length must be a positive number in getBytes(length)');
         Rand::getBytes(0);
     }
 
     public function testNegativeRandBytesParam()
     {
-        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('The length must be a positive number in getBytes(length)');
         Rand::getBytes(-1);
+    }
+
+    public function testUnsupportedPlatform()
+    {
+        self::$customRandomBytes = true;
+        $this->expectException(RuntimeException::class);
+        $rand = Rand::getBytes(2);
     }
 
     public function testRandBoolean()
@@ -146,21 +158,21 @@ class RandTest extends TestCase
 
     public function testWrongFirstParamGetInteger()
     {
-        $this->expectException('Zend\Math\Exception\InvalidArgumentException');
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid parameters provided to getInteger(min, max)');
         Rand::getInteger('foo', 0);
     }
 
     public function testWrongSecondParamGetInteger()
     {
-        $this->expectException('Zend\Math\Exception\InvalidArgumentException');
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid parameters provided to getInteger(min, max)');
         Rand::getInteger(0, 'foo');
     }
 
     public function testIntegerRangeFail()
     {
-        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('The min parameter must be lower than max in getInteger(min, max)');
         Rand::getInteger(100, 0);
     }
@@ -202,6 +214,21 @@ class RandTest extends TestCase
             $rand = Rand::getString($length);
             $this->assertEquals(strlen($rand), $length);
             $this->assertEquals(1, preg_match('#^[0-9a-zA-Z+/]+$#', $rand));
+        }
+    }
+
+    public function testGetNegativeSizeStringExpectException()
+    {
+        $this->expectException(DomainException::class);
+        $rand = Rand::getString(-1);
+    }
+
+    public function testGetStringWithOneCharacter()
+    {
+        for ($length = 1; $length < 512; $length++) {
+            $rand = Rand::getString($length, 'a');
+            $this->assertEquals(strlen($rand), $length);
+            $this->assertEquals(str_repeat('a', $length), $rand);
         }
     }
 }

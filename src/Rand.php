@@ -1,15 +1,11 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link      http://github.com/zendframework/zend-math for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace Zend\Math;
-
-use RandomLib;
 
 /**
  * Pseudorandom number generator (PRNG)
@@ -17,9 +13,7 @@ use RandomLib;
 abstract class Rand
 {
     /**
-     * Alternative random byte generator using RandomLib
-     *
-     * @var RandomLib\Generator
+     * @deprecated No longer used internally
      */
     protected static $generator = null;
 
@@ -103,7 +97,7 @@ abstract class Rand
     }
 
     /**
-     * Generate random float (0..1)
+     * Generate random float [0..1)
      * This function generates floats with platform-dependent precision
      *
      * PHP uses double precision floating-point format (64-bit) which has

@@ -1,9 +1,7 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link      http://github.com/zendframework/zend-math for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -160,21 +158,21 @@ abstract class AbstractTestCase extends TestCase
     public function validInitProvider()
     {
         return [
-            ['+0', '0'],
-            ['-0', '0'],
+            [+0, '0'],
+            [-0, '0'],
             // decimal
-            ['12345678', '12345678'],
-            ['-12345678', '-12345678'],
+            [12345678, '12345678'],
+            [-12345678, '-12345678'],
             // octal
-            ['0726746425', '123456789'],
-            ['-0726746425', '-123456789'],
+            [0726746425, '123456789'],
+            [-0726746425, '-123456789'],
             // hex
-            ['0X75BCD15', '123456789'],
-            ['0x75bcd15', '123456789'],
-            ['-0X75BCD15', '-123456789'],
+            [0X75BCD15, '123456789'],
+            [0x75bcd15, '123456789'],
+            [-0X75BCD15, '-123456789'],
             // scientific notation
-            ['1.23456e5', '123456'],
-            ['-1.23456789e8', '-123456789'],
+            [1.23456e5, '123456'],
+            [-1.23456789e8, '-123456789'],
         ];
     }
 
