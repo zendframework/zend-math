@@ -22,6 +22,31 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
+- Nothing.
+
+## 3.1.2 - TBD
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+>>>>>>> version/bump
 ## 3.1.1 - 2018-07-10
 
 ### Added
