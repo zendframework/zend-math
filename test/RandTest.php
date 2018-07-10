@@ -158,21 +158,21 @@ class RandTest extends TestCase
 
     public function testWrongFirstParamGetInteger()
     {
-        $this->expectException('Zend\Math\Exception\InvalidArgumentException');
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid parameters provided to getInteger(min, max)');
         Rand::getInteger('foo', 0);
     }
 
     public function testWrongSecondParamGetInteger()
     {
-        $this->expectException('Zend\Math\Exception\InvalidArgumentException');
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Invalid parameters provided to getInteger(min, max)');
         Rand::getInteger(0, 'foo');
     }
 
     public function testIntegerRangeFail()
     {
-        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectException(DomainException::class);
         $this->expectExceptionMessage('The min parameter must be lower than max in getInteger(min, max)');
         Rand::getInteger(100, 0);
     }
@@ -219,7 +219,7 @@ class RandTest extends TestCase
 
     public function testGetNegativeSizeStringExpectException()
     {
-        $this->expectException('Zend\Math\Exception\DomainException');
+        $this->expectException(DomainException::class);
         $rand = Rand::getString(-1);
     }
 
