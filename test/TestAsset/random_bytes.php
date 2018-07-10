@@ -4,14 +4,14 @@
  * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
+namespace Zend\Math;
 
-namespace Zend\Math\BigInteger\Exception;
+use ZendTest\Math\RandTest;
 
-use Zend\Math\Exception;
-
-/**
- * Invalid argument exception
- */
-interface ExceptionInterface extends Exception\ExceptionInterface
+function random_bytes($length)
 {
+    if (RandTest::$custom_random_bytes) {
+        throw new \Exception("Random is not supported");
+    }
+    return \random_bytes($length);
 }

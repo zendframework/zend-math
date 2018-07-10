@@ -1,20 +1,17 @@
 <?php
 /**
- * Zend Framework (http://framework.zend.com/)
- *
- * @link      http://github.com/zendframework/zf2 for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @link      http://github.com/zendframework/zend-math for the canonical source repository
+ * @copyright Copyright (c) 2005-2018 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
 namespace ZendTest\Math\BigInteger;
 
 use PHPUnit\Framework\TestCase;
+use Zend\Math\BigInteger\Adapter\AdapterInterface;
+use Zend\Math\BigInteger\Adapter\Bcmath;
 use Zend\Math\BigInteger\BigInteger as BigInt;
 
-/**
- * @group      Zend_Math
- */
 class BigIntegerTest extends TestCase
 {
     public function testFactoryCreatesBcmathAdapter()
@@ -49,5 +46,29 @@ class BigIntegerTest extends TestCase
     {
         $this->expectException('Zend\Math\Exception\ExceptionInterface');
         BigInt::factory('unknown');
+    }
+
+    public function testSetDefaultAdapter()
+    {
+        if (! extension_loaded('bcmath')) {
+            $this->markTestSkipped('Missing bcmath extensions');
+        }
+
+        BigInt::setDefaultAdapter('bcmath');
+        $this->assertInstanceOf(AdapterInterface::class, BigInt::getDefaultAdapter());
+        $this->assertInstanceOf(Bcmath::class, BigInt::getDefaultAdapter());
+    }
+
+    /**
+     * @covers Zend\Math\BigInteger\BigInteger::__callStatic
+     */
+    public function testCallStatic()
+    {
+        if (! extension_loaded('bcmath')) {
+            $this->markTestSkipped('Missing bcmath extensions');
+        }
+        BigInt::setDefaultAdapter('bcmath');
+        $result = BigInt::add(1,2);
+        $this->assertEquals(3, $result);
     }
 }
