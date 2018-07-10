@@ -22,7 +22,8 @@ All notable changes to this project will be documented in this file, in reverse 
 
 ### Fixed
 
-- Nothing.
+- [#34](https://github.com/zendframework/zend-math/pull/34) fixes the docblock for `Rand::getFloat` to indicate that the bottom boundary
+  can include 0.
 
 ## 3.1.1 - 2018-07-10
 
