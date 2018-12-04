@@ -2,11 +2,13 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.1.2 - TBD
+## 3.2.0 - 2018-12-04
 
 ### Added
 
-- Nothing.
+- [#40](https://github.com/zendframework/zend-math/pull/40) adds support for PHP 7.3.
+
+- [#38](https://github.com/zendframework/zend-math/pull/38) adds support for paragonie/random_compat 9.99.99.
 
 ### Changed
 
