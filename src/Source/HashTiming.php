@@ -108,4 +108,12 @@ class HashTiming implements RandomLib\Source
         }
         return substr($result, 0, $size);
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function isSupported()
+    {
+        return true;
+    }
 }
