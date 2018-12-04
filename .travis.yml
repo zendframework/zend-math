@@ -19,7 +19,7 @@ matrix:
     - php: 5.6
       env:
         - DEPS=locked
-        - LEGACY_DEPS="phpunit/phpunit"
+        - LEGACY_DEPS="phpunit/phpunit paragonie/random_compat"
     - php: 5.6
       env:
         - DEPS=latest
