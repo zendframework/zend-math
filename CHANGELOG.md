@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 2.7.1 - 2018-12-04
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- [#37](https://github.com/zendframework/zend-math/pull/37) adds the static method `isSupported` to the `Zend\Math\Source\HashTiming`
+  class, to ensure it fulfills the `RandomLib\Source` interface from version 2.7
+  and up.
+
 ## 2.7.0 - 2016-04-07
 
 ### Added
