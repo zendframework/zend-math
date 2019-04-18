@@ -11,7 +11,8 @@
 
     <title>Big Integers - zend-math</title>
 
-    <link rel="stylesheet" href="../css/styles-e95dab66f8.css">
+    <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-math</a>
+            <a href="">zend-math</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +76,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-math</a>
+                        <a href="" class="subnavigation__link">zend-math</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
@@ -92,19 +93,19 @@
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../rand/" class="subnavigation__link">Random Number Generation</a>
+        <a href="rand/" class="subnavigation__link">Random Number Generation</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Big Integers</a>
+        <a href="big-integer/" class="subnavigation__link">Big Integers</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../migration/" class="subnavigation__link">Migration</a>
+        <a href="migration/" class="subnavigation__link">Migration</a>
     </li>
 
                             
@@ -165,6 +166,17 @@
 </header>
 
     
+    <div class="laminas-announcement">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12 content" role="main">
@@ -177,7 +189,7 @@
         <li><a href="https://docs.zendframework.com/">Documentation</a></li>
 
         
-            <li><a href="..">zend-math</a></li>
+            <li><a href="">zend-math</a></li>
 
             
                 
@@ -260,7 +272,7 @@ $y = Rand::getString(100, '0123456789');
 $sum = $bigInt-&gt;add($x, $y);
 $len = strlen($sum);
 
-printf(&quot;%{$len}s +\n%{$len}s =\n%s\n%s\n&quot;, $x, $y, str_repeat('-', $len), $sum);</code></pre>
+printf("%{$len}s +\n%{$len}s =\n%s\n%s\n", $x, $y, str_repeat('-', $len), $sum);</code></pre>
 
 <p>Note that the big integers are managed using strings; even the result of the sum
 is represented as a string.</p>
@@ -277,23 +289,23 @@ $x = '-' . Rand::getString($digits, '0123456789');
 $byte = $bigInt-&gt;intToBin($x);
 
 printf(
-    &quot;The binary representation of a big integer with %d digits:\n%s\nis (in Base64 format): %s\n&quot;,
+    "The binary representation of a big integer with %d digits:\n%s\nis (in Base64 format): %s\n",
     $digits
     $x,
     base64_encode($byte)
 );
-printf(&quot;Length in bytes: %d\n&quot;, strlen($byte));
+printf("Length in bytes: %d\n", strlen($byte));
 
 $byte = $bigInt-&gt;intToBin($x, true);
 
 printf(
-    &quot;The two's complement binary representation of the big integer with %d digits:\n&quot;
-    . &quot;%s\nis (in Base64 format): %s\n&quot;,
+    "The two's complement binary representation of the big integer with %d digits:\n"
+    . "%s\nis (in Base64 format): %s\n",
     $digits,
     $x,
     base64_encode($byte)
 );
-printf(&quot;Length in bytes: %d\n&quot;, strlen($byte));</code></pre>
+printf("Length in bytes: %d\n", strlen($byte));</code></pre>
 
 <p>The above generates the binary representation of the big integer number using the
 default binary format, and the <a href="http://en.wikipedia.org/wiki/Two%27s_complement">two's complement</a>
@@ -307,7 +319,7 @@ representation (specified with the <code>true</code> parameter in the <code>intT
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../rand/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="rand/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -316,7 +328,7 @@ representation (specified with the <code>true</code> parameter in the <code>intT
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../migration/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="migration/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -351,7 +363,7 @@ representation (specified with the <code>true</code> parameter in the <code>intT
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-math</a>
+            <a href="">zend-math</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -360,13 +372,13 @@ representation (specified with the <code>true</code> parameter in the <code>intT
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-math</a>
+                        <a href="" class="subnavigation__link">zend-math</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
@@ -377,19 +389,19 @@ representation (specified with the <code>true</code> parameter in the <code>intT
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../rand/" class="subnavigation__link">Random Number Generation</a>
+        <a href="rand/" class="subnavigation__link">Random Number Generation</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Big Integers</a>
+        <a href="big-integer/" class="subnavigation__link">Big Integers</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../migration/" class="subnavigation__link">Migration</a>
+        <a href="migration/" class="subnavigation__link">Migration</a>
     </li>
 
                             
@@ -471,9 +483,8 @@ representation (specified with the <code>true</code> parameter in the <code>intT
         var base_url = '..',
             siteName = 'zend-math';
     </script>
-    <script src="../js/scripts-a978f1ec1a.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -502,6 +513,14 @@ representation (specified with the <code>true</code> parameter in the <code>intT
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 

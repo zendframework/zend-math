@@ -11,7 +11,8 @@
 
     <title>Random Number Generation - zend-math</title>
 
-    <link rel="stylesheet" href="../css/styles-e95dab66f8.css">
+    <link rel="stylesheet" href="../css/styles-18b942728f.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -66,7 +67,7 @@
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-math</a>
+            <a href="">zend-math</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -75,13 +76,13 @@
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-math</a>
+                        <a href="" class="subnavigation__link">zend-math</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
@@ -92,19 +93,19 @@
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Random Number Generation</a>
+        <a href="rand/" class="subnavigation__link">Random Number Generation</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../big-integer/" class="subnavigation__link">Big Integers</a>
+        <a href="big-integer/" class="subnavigation__link">Big Integers</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../migration/" class="subnavigation__link">Migration</a>
+        <a href="migration/" class="subnavigation__link">Migration</a>
     </li>
 
                             
@@ -165,6 +166,17 @@
 </header>
 
     
+    <div class="laminas-announcement">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                Zend Framework transitions to the Linux Foundation. <a href="https://getlaminas.org">Learn More.</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
     <div class="container">
         <div class="row">
             <div class="col-md-9 col-xs-12 content" role="main">
@@ -177,7 +189,7 @@
         <li><a href="https://docs.zendframework.com/">Documentation</a></li>
 
         
-            <li><a href="..">zend-math</a></li>
+            <li><a href="">zend-math</a></li>
 
             
                 
@@ -241,19 +253,19 @@ regarding extensions it can use.</p>
 <pre class="codehilite"><code class="language-php">use Zend\Math\Rand;
 
 $bytes = Rand::getBytes(32);
-printf(&quot;Random bytes (in Base64): %s\n&quot;, base64_encode($bytes));
+printf("Random bytes (in Base64): %s\n", base64_encode($bytes));
 
 $boolean = Rand::getBoolean();
-printf(&quot;Random boolean: %s\n&quot;, $boolean ? 'true' : 'false');
+printf("Random boolean: %s\n", $boolean ? 'true' : 'false');
 
 $integer = Rand::getInteger(0, 1000);
-printf(&quot;Random integer in [0-1000]: %d\n&quot;, $integer);
+printf("Random integer in [0-1000]: %d\n", $integer);
 
 $float = Rand::getFloat();
-printf(&quot;Random float in [0-1): %f\n&quot;, $float);
+printf("Random float in [0-1): %f\n", $float);
 
 $string = Rand::getString(32, 'abcdefghijklmnopqrstuvwxyz');
-printf(&quot;Random string in latin alphabet: %s\n&quot;, $string);</code></pre>
+printf("Random string in latin alphabet: %s\n", $string);</code></pre>
 
 
 
@@ -263,7 +275,7 @@ printf(&quot;Random string in latin alphabet: %s\n&quot;, $string);</code></pre>
         
         <li class="page-nav__item">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../intro/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="intro/">
                     <i class="fa fa-chevron-left"></i> Previous
                 </a>
             
@@ -272,7 +284,7 @@ printf(&quot;Random string in latin alphabet: %s\n&quot;, $string);</code></pre>
         
         <li class="page-nav__item">
             
-                <a rel="next" class="page-nav__link page-nav__link--next" href="../big-integer/">
+                <a rel="next" class="page-nav__link page-nav__link--next" href="big-integer/">
                     Next <i class="fa fa-chevron-right"></i>
                 </a>
             
@@ -307,7 +319,7 @@ printf(&quot;Random string in latin alphabet: %s\n&quot;, $string);</code></pre>
                     
     <div class="subnavigation hidden-print">
         <h4 class="subnavigation__title">
-            <a href="..">zend-math</a>
+            <a href="">zend-math</a>
         </h4>
 
         <h5 class="subnavigation__subtitle">Table of Contents</h5>
@@ -316,13 +328,13 @@ printf(&quot;Random string in latin alphabet: %s\n&quot;, $string);</code></pre>
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href=".." class="subnavigation__link">zend-math</a>
+                        <a href="" class="subnavigation__link">zend-math</a>
                     </li>
                 
             
                 
                     <li class="subnavigation__list-item ">
-                        <a href="../intro/" class="subnavigation__link">Intro</a>
+                        <a href="intro/" class="subnavigation__link">Intro</a>
                     </li>
                 
             
@@ -333,19 +345,19 @@ printf(&quot;Random string in latin alphabet: %s\n&quot;, $string);</code></pre>
                             
                                 
     <li class="subnavigation__list-item subnavigation__list-item--active">
-        <a href="./" class="subnavigation__link">Random Number Generation</a>
+        <a href="rand/" class="subnavigation__link">Random Number Generation</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../big-integer/" class="subnavigation__link">Big Integers</a>
+        <a href="big-integer/" class="subnavigation__link">Big Integers</a>
     </li>
 
                             
                                 
     <li class="subnavigation__list-item ">
-        <a href="../migration/" class="subnavigation__link">Migration</a>
+        <a href="migration/" class="subnavigation__link">Migration</a>
     </li>
 
                             
@@ -427,9 +439,8 @@ printf(&quot;Random string in latin alphabet: %s\n&quot;, $string);</code></pre>
         var base_url = '..',
             siteName = 'zend-math';
     </script>
-    <script src="../js/scripts-a978f1ec1a.js"></script>
-        <script src="../search/require.js"></script>
-        <script src="../search/search.js"></script>
+    <script src="../js/scripts-edc4cfa790.js"></script>
+        <script src="../search/main.js"></script>
 
     
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
@@ -458,6 +469,14 @@ printf(&quot;Random string in latin alphabet: %s\n&quot;, $string);</code></pre>
             </div>
         </div>
     </div>
+
+<script>
+// Anchors
+anchors.options.placement = 'left';
+anchors.add(
+    '.content h1:not(.content__title), .content h2, .content > h3, .content h4, .content h5'
+);
+</script>
 
 
 
