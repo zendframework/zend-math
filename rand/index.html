@@ -290,22 +290,22 @@ regarding extensions it can use.</p>
 </ul>
 <h2 id="examples">Examples</h2>
 <p>The example below demonstrates generating random data using <code>Zend\Math\Rand</code>:</p>
-<pre class="codehilite"><code class="language-php">use Zend\Math\Rand;
+<p> <pre class=codehilite><code class=language-php>use Zend\Math\Rand;
 
 $bytes = Rand::getBytes(32);
-printf("Random bytes (in Base64): %s\n", base64_encode($bytes));
+printf(&quot;Random bytes (in Base64): %s\n&quot;, base64_encode($bytes));
 
 $boolean = Rand::getBoolean();
-printf("Random boolean: %s\n", $boolean ? 'true' : 'false');
+printf(&quot;Random boolean: %s\n&quot;, $boolean ? 'true' : 'false');
 
 $integer = Rand::getInteger(0, 1000);
-printf("Random integer in [0-1000]: %d\n", $integer);
+printf(&quot;Random integer in [0-1000]: %d\n&quot;, $integer);
 
 $float = Rand::getFloat();
-printf("Random float in [0-1): %f\n", $float);
+printf(&quot;Random float in [0-1): %f\n&quot;, $float);
 
 $string = Rand::getString(32, 'abcdefghijklmnopqrstuvwxyz');
-printf("Random string in latin alphabet: %s\n", $string);</code></pre>
+printf(&quot;Random string in latin alphabet: %s\n&quot;, $string);</code></pre></p>
 
 
 
@@ -339,7 +339,7 @@ printf("Random string in latin alphabet: %s\n", $string);</code></pre>
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-math/edit/master/docs/rand.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-math/edit/master/docs/book/rand.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>

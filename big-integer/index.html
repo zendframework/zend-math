@@ -301,7 +301,7 @@ the GMP or the BC Math extensions as adapters.</p>
 <h2 id="examples">Examples</h2>
 <p>The example below illustrates using the BC Math adapter to calculate the sum of
 two random integers with 100 digits each.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Math\BigInteger\BigInteger;
+<p> <pre class=codehilite><code class=language-php>use Zend\Math\BigInteger\BigInteger;
 use Zend\Math\Rand;
 
 $bigInt = BigInteger::factory('bcmath');
@@ -312,13 +312,12 @@ $y = Rand::getString(100, '0123456789');
 $sum = $bigInt-&gt;add($x, $y);
 $len = strlen($sum);
 
-printf("%{$len}s +\n%{$len}s =\n%s\n%s\n", $x, $y, str_repeat('-', $len), $sum);</code></pre>
-
+printf(&quot;%{$len}s +\n%{$len}s =\n%s\n%s\n&quot;, $x, $y, str_repeat('-', $len), $sum);</code></pre></p>
 <p>Note that the big integers are managed using strings; even the result of the sum
 is represented as a string.</p>
 <p>Next is an example using the BC Math adapter to generate the binary
 representation of a negative big integer containing 100 digits.</p>
-<pre class="codehilite"><code class="language-php">use Zend\Math\BigInteger\BigInteger;
+<p> <pre class=codehilite><code class=language-php>use Zend\Math\BigInteger\BigInteger;
 use Zend\Math\Rand;
 
 $bigInt = BigInteger::factory('bcmath');
@@ -329,24 +328,23 @@ $x = '-' . Rand::getString($digits, '0123456789');
 $byte = $bigInt-&gt;intToBin($x);
 
 printf(
-    "The binary representation of a big integer with %d digits:\n%s\nis (in Base64 format): %s\n",
+    &quot;The binary representation of a big integer with %d digits:\n%s\nis (in Base64 format): %s\n&quot;,
     $digits
     $x,
     base64_encode($byte)
 );
-printf("Length in bytes: %d\n", strlen($byte));
+printf(&quot;Length in bytes: %d\n&quot;, strlen($byte));
 
 $byte = $bigInt-&gt;intToBin($x, true);
 
 printf(
-    "The two's complement binary representation of the big integer with %d digits:\n"
-    . "%s\nis (in Base64 format): %s\n",
+    &quot;The two's complement binary representation of the big integer with %d digits:\n&quot;
+    . &quot;%s\nis (in Base64 format): %s\n&quot;,
     $digits,
     $x,
     base64_encode($byte)
 );
-printf("Length in bytes: %d\n", strlen($byte));</code></pre>
-
+printf(&quot;Length in bytes: %d\n&quot;, strlen($byte));</code></pre></p>
 <p>The above generates the binary representation of the big integer number using the
 default binary format, and the <a href="http://en.wikipedia.org/wiki/Two%27s_complement">two's complement</a>
 representation (specified with the <code>true</code> parameter in the <code>intToBin</code> function).</p>
@@ -383,7 +381,7 @@ representation (specified with the <code>true</code> parameter in the <code>intT
     <div class="help-wanted">
         <p>
             Found a mistake or want to contribute to the documentation?
-            <a href="https://github.com/zendframework/zend-math/edit/master/docs/big-integer.md" target="_blank" class="help-wanted__link">
+            <a href="https://github.com/zendframework/zend-math/edit/master/docs/book/big-integer.md" target="_blank" class="help-wanted__link">
                 Edit this page on GitHub!
             </a>
         </p>
